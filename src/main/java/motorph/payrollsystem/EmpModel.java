@@ -10,7 +10,7 @@ package motorph.payrollsystem;
  */
 public abstract class EmpModel {
 
-    //Declaring an Employee object array
+    //Declaring an EmpData object array
     protected EmpData[] empData;
 
     protected abstract EmpData[] getEmployeeModelList();

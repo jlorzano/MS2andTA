@@ -10,6 +10,7 @@ package motorph.payrollsystem;
  */
 public class EmployeeHoursSalary {
     
+    //This is where we indicate which index we need to calculate the GrossEarnings (hours worked multipled by the hourly rate).
     public double getSalaryOnHoursWorked(double hoursWorked, double hourlyRate) {
         return hoursWorked * hourlyRate;
     }

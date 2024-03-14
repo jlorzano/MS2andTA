@@ -124,12 +124,14 @@ public class EmpData {
     public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+    //We set the values of the deductions from the bufferedreader.
     public void setTotalDeduction(double sssDeduction, double pagibigDeduction, double philhealthDeduction, double witholdingTax) {
         this.sssDeduction = sssDeduction;
         this.pagibigDeduction =  pagibigDeduction;
         this.philhealthDeduction = philhealthDeduction;
         this.witholdingTax = witholdingTax;
     }
+    //This is where we calculate the total deductions by adding the four types of deductions and then calling this "getter" on the main method and deduct it from the gross earnings.
     public double getTotalDeduction() {
         totalDeduction = sssDeduction + pagibigDeduction + philhealthDeduction + witholdingTax;
         return totalDeduction;
