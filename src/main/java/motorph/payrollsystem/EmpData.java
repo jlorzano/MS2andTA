@@ -25,6 +25,8 @@ public class EmpData {
     private double philhealthDeduction;
     private double witholdingTax;
     private double hourlyRate;
+    private double hoursWorked;
+    private double totalDeduction;
     
     public String getEmpId() {
         return empID;
@@ -115,5 +117,21 @@ public class EmpData {
     }
     public void setHourlyRate(double hourlyRate) {
         this.hourlyRate = hourlyRate;
+    }
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+    public void setTotalDeduction(double sssDeduction, double pagibigDeduction, double philhealthDeduction, double witholdingTax) {
+        this.sssDeduction = sssDeduction;
+        this.pagibigDeduction =  pagibigDeduction;
+        this.philhealthDeduction = philhealthDeduction;
+        this.witholdingTax = witholdingTax;
+    }
+    public double getTotalDeduction() {
+        totalDeduction = sssDeduction + pagibigDeduction + philhealthDeduction + witholdingTax;
+        return totalDeduction;
     }
 }

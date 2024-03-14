@@ -5,6 +5,7 @@
 package motorph.payrollsystem;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Scanner;
  * @author gamer
  */
 public class PayrollSystem {
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private static EmpModel empModel;
     
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -44,6 +45,12 @@ private static void selectOpt(String select) throws IOException  {
         case "1":
             EmployeeInformation();
             break;
+        case "2":
+            EmployeeGrossEarnings();
+            break;
+        case "3":
+            EmployeeNetEarnings();
+            break;
         default:
             break;
     }
@@ -53,14 +60,54 @@ private static void getDefaultEmployeeModel() throws IOException {
 }
 
 private static void EmployeeInformation() throws IOException {
-    EmpData[] emps = empModel.getEmployeeModelList();
-    System.out.println("=======================");
-    System.out.println(" Employee Information ");
-    System.out.println("=======================");
-    System.out.println("emps.length " + emps.length);
-    for (int a = 0; a < emps.length; a++) {
-    EmpData empx = emps[a];
-    System.out.print("Employee ID: " + empx.getEmpId() + "\n");
+    EmpData[] empList = empModel.getEmployeeModelList();
+        System.out.println("=======================");
+        System.out.println(" Employee Information ");
+        System.out.println("=======================");
+        System.out.println("empList.length " + empList.length);
+    for (int a = 0; a < empList.length; a++) {
+        if (empList[a] != null) {
+        EmpData employee = empList[a];
+        System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
+        System.out.println("Employee Name: " + employee.getFirstName() + employee.getLastName());
+        System.out.println("DOB: " + employee.getBirthday() + "     " + "Position: " + employee.getPosition());
+        System.out.println("Address: " + employee.getAddress());
+    }
+}
+}
+
+private static void EmployeeGrossEarnings() {
+    EmpData[] empList = empModel.getEmployeeModelList();
+    EmployeeHoursSalary wSalary = new EmployeeHoursSalary(); 
+        System.out.println("=======================");
+        System.out.println(" Employee Information ");
+        System.out.println("=======================");
+        System.out.println("empList.length " + empList.length);
+    for (int b = 0; b < empList.length; b++) {
+        if (empList[b] != null) {
+        EmpData employee = empList[b];
+        System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
+        System.out.println("Employee Name: " + employee.getFirstName() + employee.getLastName());
+        System.out.println("Gross Earnings: " + (df.format(wSalary.getSalaryOnHoursWorked(employee.getHoursWorked(), employee.getHourlyRate()))));
+    }    
+}
+}
+
+private static void EmployeeNetEarnings() {
+    EmpData[] empList = empModel.getEmployeeModelList();
+    EmployeeHoursSalary wSalary = new EmployeeHoursSalary(); 
+        System.out.println("=======================");
+        System.out.println(" Employee Information ");
+        System.out.println("=======================");
+        System.out.println("empList.length " + empList.length);
+    for (int b = 0; b < empList.length; b++) {
+        if (empList[b] != null) {
+        EmpData employee = empList[b];
+        System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
+        System.out.println("Employee Name: " + employee.getFirstName() + employee.getLastName());
+        System.out.println("Gross Earnings: " + (df.format(wSalary.getSalaryOnHoursWorked(employee.getHoursWorked(), employee.getHourlyRate()))));
+        System.out.println("Net Earnings: " + (df.format(wSalary.getSalaryOnHoursWorked(employee.getHoursWorked(), employee.getHourlyRate())- employee.getTotalDeduction())));
+    }
 }
 }
 }

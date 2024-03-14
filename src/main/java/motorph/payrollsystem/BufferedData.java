@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,32 +20,34 @@ public class BufferedData extends EmpModel {
     
     public BufferedData () throws IOException {
         String path = "C:\\Users\\gamer\\OneDrive\\Documents\\Mmdc\\MotorPH Employee Datav4.txt";
-           empData = new EmpData[35];
+           empData = new EmpData[31];
            getData(path);
 }
     @Override
     public EmpData[] getEmployeeModelList() {
         return empData;
     }
+    
     private void getData(String path) throws FileNotFoundException, IOException {
         int maxAttempts = 3;
         int attempts = 0;
         boolean cont = true;
         while (cont) {
         Scanner scan = new Scanner(System.in);
-        String str;
+        String str = "";
         System.out.print("Enter Employee ID: ");
         String lookup = scan.nextLine();
         attempts++;
         if (attempts==maxAttempts) { System.out.println("You have reached the max attempt!"); break; }
-                      
+        
+        try {
         BufferedReader br = new BufferedReader(new FileReader(path));
         boolean found = false;
         int counter = 0;
-        while ((str = br.readLine()) != null) {
+        while (!"".equals(str = br.readLine())) {
             if (str.contains(lookup)) { 
                 String[] values = str.split(",");
-                System.out.println("test output");
+                System.out.println("Login Successful!");
                 EmpData emps = new EmpData();
                 emps.setEmpId(values[0]);
                 emps.setFirstName(values[2]);
@@ -60,6 +64,8 @@ public class BufferedData extends EmpModel {
                 emps.setPagibigDeduction(Double.parseDouble(values[28]));
                 emps.setPhilhealthDeduction(Double.parseDouble(values[26]));
                 emps.setWitholdingTax(Double.parseDouble(values[27]));
+                emps.setHoursWorked(Double.parseDouble(values[23]));
+                emps.setHourlyRate(Double.parseDouble(values[18]));
                 empData[counter] = emps;
                 counter++;
                 found = true;
@@ -71,8 +77,10 @@ public class BufferedData extends EmpModel {
             }
         cont = !found;
     }
-}
-
-    
+     catch (FileNotFoundException ex) {
+            Logger.getLogger(BufferedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }    
+}    
 }    
 
