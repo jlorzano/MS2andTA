@@ -66,6 +66,10 @@ public class BufferedData extends EmpModel {
                 emps.setWitholdingTax(Double.parseDouble(values[27]));
                 emps.setHoursWorked(Double.parseDouble(values[23]));
                 emps.setHourlyRate(Double.parseDouble(values[18]));
+                emps.setWeekOne(Double.parseDouble(values[19]));
+                emps.setWeekTwo(Double.parseDouble(values[20]));
+                emps.setWeekThree(Double.parseDouble(values[21]));
+                emps.setWeekFour(Double.parseDouble(values[22]));
                 empData[counter] = emps;
                 counter++;
                 found = true;

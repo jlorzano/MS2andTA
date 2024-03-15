@@ -27,6 +27,12 @@ public class EmpData {
     private double hourlyRate;
     private double hoursWorked;
     private double totalDeduction;
+    private double weekOne;
+    private double weekTwo;
+    private double weekThree;
+    private double weekFour;
+    private double totalWorkHours;
+    private double totalAllowance;
     
     public String getEmpId() {
         return empID;
@@ -124,6 +130,30 @@ public class EmpData {
     public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+    public double getWeekOne() {
+        return weekOne;
+    }
+    public void setWeekOne(double weekOne) {
+        this.weekOne = weekOne;
+    }
+    public double getWeekTwo() {
+        return weekTwo;
+    }
+    public void setWeekTwo(double weekTwo) {
+        this.weekTwo = weekTwo;
+    }
+    public double getWeekThree() {
+        return weekThree;
+    }
+    public void setWeekThree(double weekThree) {
+        this.weekThree = weekThree;
+    }
+    public double getWeekFour() {
+        return weekFour;
+    }
+    public void setWeekFour(double weekFour) {
+        this.weekFour = weekFour;
+    }
     //We set the values of the deductions from the bufferedreader.
     public void setTotalDeduction(double sssDeduction, double pagibigDeduction, double philhealthDeduction, double witholdingTax) {
         this.sssDeduction = sssDeduction;
@@ -135,5 +165,24 @@ public class EmpData {
     public double getTotalDeduction() {
         totalDeduction = sssDeduction + pagibigDeduction + philhealthDeduction + witholdingTax;
         return totalDeduction;
+    }
+    public void setTotalHoursWork (double weekOne, double weekTwo, double weekThree, double weekFour) {
+        this.weekOne = weekOne;
+        this.weekTwo = weekTwo;
+        this.weekThree = weekThree;
+        this.weekFour = weekFour;
+    }
+    public double getTotalHoursWork () {
+        totalWorkHours = weekOne + weekTwo + weekThree + weekFour;
+        return totalWorkHours;
+    }
+    public void setTotalAllowance (double riceSubsidy, double clothingAllowance, double phoneAllowance) {
+        this.riceSubsidy = riceSubsidy;
+        this.clothingAllowance = clothingAllowance;
+        this.phoneAllowance = phoneAllowance;
+    }
+    public double getTotalAllowance () {
+        totalAllowance = riceSubsidy + clothingAllowance + phoneAllowance;
+        return totalAllowance;
     }
 }
