@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class PayrollSystem {
     //this code "DecimalFormat" sets the decimal value format of each double into 2 decimal points.
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    private static EmpModel empModel;
+    private static EmployeeModel employeeModel;
     
     public static void main(String[] args) throws InterruptedException, IOException {
         getDefaultEmployeeModel();
@@ -61,21 +61,21 @@ private static void selectOpt(String select) throws IOException, InterruptedExce
 
 //This method intiates the user login by entering their userID stored on the CSV file.
 private static void getDefaultEmployeeModel() throws IOException {
-        empModel = new BufferedData() {};
+        employeeModel = new GetEmployeeDataFromFile() {};
 }
 
 //This method pulls specific employee information required by motorPH (employee number/ID, name, date of birth and i added the status and position as well"
 private static void EmployeeInformation() throws IOException, InterruptedException {
     //New object instancing
-    EmpData[] empList = empModel.getEmployeeModelList();
+    EmployeeData[] employeeList = employeeModel.getEmployeeModelList();
         System.out.println("=====================================");
         System.out.println("Employee Information ");
         System.out.println("=====================================");
     //For loop statement used to go thru the stored csv data.    
-    for (int a = 0; a < empList.length; a++) {
+    for (int a = 0; a < employeeList.length; a++) {
         //This IF statement is to check if the value on the array is not NULL so we can avoid the NullPointerException error message.
-        if (empList[a] != null) {
-        EmpData employee = empList[a];
+        if (employeeList[a] != null) {
+        EmployeeData employee = employeeList[a];
         System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
         System.out.println("Employee Name: " + employee.getFirstName() + employee.getLastName());
         System.out.println("DOB: " + employee.getBirthday() + "     " + "Position: " + employee.getPosition());
@@ -90,19 +90,18 @@ private static void EmployeeInformation() throws IOException, InterruptedExcepti
 //under the EmployeeHoursSalary class.
 private static void EmployeeGrossEarnings() throws InterruptedException, IOException {
     //New object instancing
-    EmpData[] empList = empModel.getEmployeeModelList();
+    EmployeeData[] employeeList = employeeModel.getEmployeeModelList();
     EmployeeHoursSalary wSalary = new EmployeeHoursSalary(); 
         System.out.println("=====================================");
         System.out.println("Employee Gross Earnings Data ");
         System.out.println("=====================================");
     //For loop statement used to go thru the stored csv data.    
-    for (int b = 0; b < empList.length; b++) {
+    for (int b = 0; b < employeeList.length; b++) {
         //This IF statement is to check if the value on the array is not NULL so we can avoid the NullPointerException error message.
-        if (empList[b] != null) {
-        EmpData employee = empList[b];
+        if (employeeList[b] != null) {
+        EmployeeData employee = employeeList[b];
         System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
         System.out.print("Employee Name: " + employee.getFirstName() + employee.getLastName() + "     "); System.out.println("Total Hours Worked: " + employee.getTotalHoursWork());
-        System.out.println("=====================================");
         //This outputs the total employee benefits which is calculated on the EmpData class
         System.out.println("Total Employee Benefits (Rice/Clothing/Phone Allowance): " + employee.getTotalAllowance() + "     ");
         System.out.println("=====================================");
@@ -117,24 +116,23 @@ private static void EmployeeGrossEarnings() throws InterruptedException, IOExcep
 //was performed under the EmpData class)
 private static void EmployeeNetEarnings() throws InterruptedException, IOException {
     //New object instancing
-    EmpData[] empList = empModel.getEmployeeModelList();
+    EmployeeData[] employeeList = employeeModel.getEmployeeModelList();
     EmployeeHoursSalary wSalary = new EmployeeHoursSalary(); 
         System.out.println("=====================================");
         System.out.println("Employee Net Earnings Data");
         System.out.println("=====================================");
     //For loop statement used to go thru the stored csv data.
-    for (int b = 0; b < empList.length; b++) {
+    for (int b = 0; b < employeeList.length; b++) {
         //This IF statement is to check if the value on the array is not NULL so we can avoid the NullPointerException error message.
-        if (empList[b] != null) {
-        EmpData employee = empList[b];
+        if (employeeList[b] != null) {
+        EmployeeData employee = employeeList[b];
         System.out.println("Employee ID: " + employee.getEmpId() + "     " + "Status: " + employee.getStatus());
         System.out.print("Employee Name: " + employee.getFirstName() + employee.getLastName() + "     "); System.out.println("Total Hours Worked: " + employee.getTotalHoursWork());
+        System.out.println("=====================================");
         //This outputs the total employee benefits which is calculated on the EmpData class
         System.out.println("Total Employee Benefits (Rice/Clothing/Phone Allowance): " + employee.getTotalAllowance() + "     ");
-        System.out.println("=====================================");
         //This outputs the total employee deductions which is calculated on the EmpData class
         System.out.println("Total Employee Deductions (SSS/PAG-IBIG/PHIL HEALTH/WITHOLDING TAX): " + employee.getTotalDeduction() + "     ");
-        System.out.println("=====================================");
         System.out.println("Gross Earnings: " + (df.format(wSalary.getSalaryOnHoursWorked(employee.getHoursWorked(), employee.getHourlyRate()))));
         System.out.println("=====================================");
         System.out.println("Net Earnings: " + (df.format(wSalary.getSalaryOnHoursWorked(employee.getHoursWorked(), employee.getHourlyRate())- employee.getTotalDeduction())));

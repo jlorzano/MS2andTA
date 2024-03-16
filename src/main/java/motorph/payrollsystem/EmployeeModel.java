@@ -8,11 +8,11 @@ package motorph.payrollsystem;
  *
  * @author gamer
  */
-public abstract class EmpModel {
+public abstract class EmployeeModel {
 
     //Declaring an EmpData object array
-    protected EmpData[] empData;
+    protected EmployeeData[] employeeData;
 
-    protected abstract EmpData[] getEmployeeModelList();
+    protected abstract EmployeeData[] getEmployeeModelList();
     
 }

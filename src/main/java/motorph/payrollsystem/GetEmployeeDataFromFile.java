@@ -16,16 +16,16 @@ import java.util.logging.Logger;
  *
  * @author gamer
  */
-public class BufferedData extends EmpModel {
+public class GetEmployeeDataFromFile extends EmployeeModel {
     
-    public BufferedData () throws IOException {
+    public GetEmployeeDataFromFile () throws IOException {
         String path = "C:\\Users\\gamer\\OneDrive\\Documents\\Mmdc\\MotorPH Employee Datav4.txt";
-           empData = new EmpData[31];
+           employeeData = new EmployeeData[31];
            getData(path);
 }
     @Override
-    public EmpData[] getEmployeeModelList() {
-        return empData;
+    public EmployeeData[] getEmployeeModelList() {
+        return employeeData;
     }
     
     private void getData(String path) throws FileNotFoundException, IOException {
@@ -48,7 +48,7 @@ public class BufferedData extends EmpModel {
             if (str.contains(lookup)) { 
                 String[] values = str.split(",");
                 System.out.println("Login Successful!");
-                EmpData emps = new EmpData();
+                EmployeeData emps = new EmployeeData();
                 emps.setEmpId(values[0]);
                 emps.setFirstName(values[2]);
                 emps.setLastName(values[1]);
@@ -70,7 +70,7 @@ public class BufferedData extends EmpModel {
                 emps.setWeekTwo(Double.parseDouble(values[20]));
                 emps.setWeekThree(Double.parseDouble(values[21]));
                 emps.setWeekFour(Double.parseDouble(values[22]));
-                empData[counter] = emps;
+                employeeData[counter] = emps;
                 counter++;
                 found = true;
                 break;
@@ -82,7 +82,7 @@ public class BufferedData extends EmpModel {
         cont = !found;
     }
      catch (FileNotFoundException ex) {
-            Logger.getLogger(BufferedData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GetEmployeeDataFromFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         }    
 }    

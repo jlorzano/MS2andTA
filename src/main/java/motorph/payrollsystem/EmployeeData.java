@@ -8,7 +8,7 @@ package motorph.payrollsystem;
  *
  * @author gamer
  */
-public class EmpData {
+public class EmployeeData {
     
     private String empID;
     private String lastName;
