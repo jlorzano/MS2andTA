@@ -15,6 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author gamer
  */
+
+/*This JUnit test aims to see if when the Employee ID is entered it will redirect the user to the main menu where they can select from 3 options
+  1. employee information, 2. gross earnings and 3. net earnings.
+  The test should display the necessary information based on the selection made by the user.
+  Option one should display at least the following information (employee id, employee name and date of birth)
+  Option two should display at least the following information (employee id, employee name, hours worked, and gross earnings)
+  Option three should display at least the following information (employee id, employee name, hours worked, gross earnings, total benefits, total deduction and net earnings)
+  After each and every option the user should be able to either go back to the main menu or exit the program.
+*/
+
 public class PayrollSystemTest {
     
     public PayrollSystemTest() {
