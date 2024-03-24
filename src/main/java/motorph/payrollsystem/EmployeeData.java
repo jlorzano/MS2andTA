@@ -166,21 +166,25 @@ public class EmployeeData {
         totalDeduction = sssDeduction + pagibigDeduction + philhealthDeduction + witholdingTax;
         return totalDeduction;
     }
+    //We set the values of each hours worked per week 40 hours per week from week one to four
     public void setTotalHoursWork (double weekOne, double weekTwo, double weekThree, double weekFour) {
         this.weekOne = weekOne;
         this.weekTwo = weekTwo;
         this.weekThree = weekThree;
         this.weekFour = weekFour;
     }
+    //This is where we calculate the total hours for the month
     public double getTotalHoursWork () {
         totalWorkHours = weekOne + weekTwo + weekThree + weekFour;
         return totalWorkHours;
     }
+    //This is where we set the vaules of each employee benefits from the bufferedreader
     public void setTotalAllowance (double riceSubsidy, double clothingAllowance, double phoneAllowance) {
         this.riceSubsidy = riceSubsidy;
         this.clothingAllowance = clothingAllowance;
         this.phoneAllowance = phoneAllowance;
     }
+    //This is where we add the total employee benefits.
     public double getTotalAllowance () {
         totalAllowance = riceSubsidy + clothingAllowance + phoneAllowance;
         return totalAllowance;
