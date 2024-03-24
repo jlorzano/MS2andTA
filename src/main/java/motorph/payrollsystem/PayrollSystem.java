@@ -37,20 +37,28 @@ private static void menuSelect() throws InterruptedException, IOException {
     System.out.println("3. View Net Earnings");
     System.out.println("=====================================");
     System.out.print("Enter a selection: ");
+    // this code takes the users keyboard entry
     String select = sel.nextLine();
+    // this code prints out the user entry which is the employee ID
+    // then saves that entry to the string "select"
     selectOpt(select);
+    // this code closes the scanner
     sel.close();
     }
 
 //Menu Selection
 private static void selectOpt(String select) throws IOException, InterruptedException  {
+    // this code used conditional branch "switch" statement
     switch(select) {
+        // when option "1" is selected it runs the employee information method which outputs basic employee information.    
         case "1":
             EmployeeInformation();
             break;
+        // when option "2" is selected it runs the employee gross earnings method which outputs some employee information, employee benefits and gross earnings calculations.
         case "2":
             EmployeeGrossEarnings();
             break;
+        // when option "3" is selected it runs the employee net earnings method which outputs some employee information, employee benefits, gross earnings calculation, employee deductions, and net earnings calculations.
         case "3":
             EmployeeNetEarnings();
             break;
